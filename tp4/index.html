@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <input value="" class="affichage"></input>
+        <div class="flex">
+            <label for="taille_p">Longueur du password</label>
+            <input type="number" min="15" max="20" class="box" id="taille_p">
+        </div>
+
+        <div class="flex">
+            <label for="maj">Contient des lettres majuscules</label>
+            <input type="checkbox" id="maj">
+        </div>
+
+        <div class="flex">
+            <label for="min">Contient des lettres minuscules</label>
+            <input type="checkbox" id="min">
+        </div>
+
+        <div class="flex">
+            <label for="nbr">Contient des Nombres</label>
+            <input type="checkbox" id="nbr">
+        </div>
+
+        <div class="flex">
+            <label for="carac">Contient des Caracteres speciaux</label>
+            <input type="checkbox" id="carac">
+        </div>
+
+        <button class="generer">
+            Generer Le Mot de Passe
+        </button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

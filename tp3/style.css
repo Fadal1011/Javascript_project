@@ -1,0 +1,79 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background: rgb(202, 202, 202);
+    height: 90vh;
+}
+
+.container{
+    width: 1000px;
+    height: 10vh;
+    background: white;
+    margin: 2rem auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem 1rem;
+}
+
+.container button{
+    width: 15rem;
+    height: 4rem;
+    border-radius: .4rem;
+    cursor: pointer; 
+    color: white;
+}
+
+.container .success{
+    background: rgb(0, 239, 0);
+}
+.container .danger{
+    background: rgb(239, 0, 0);
+}
+
+.container .warning{
+    background: rgb(255, 221, 0);
+}
+
+.container .info{
+    background: rgb(0, 247, 255);
+}
+
+
+.notification div{
+    width: 15rem;
+    height: 7rem;
+    color: black;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    font-size: 2rem;
+    border-radius: 1rem;
+    position: absolute;
+    right:10%;
+}
+
+
+
+
+.notification_success{
+    background: rgb(0, 179, 0);
+    bottom: 10%;
+}
+.notification_danger{
+    background: red;
+    bottom: 8%;
+}
+
+.notification_warning{
+    background: rgb(255, 221, 0);
+    bottom: 6%;
+}
+.notification_info{
+    background: rgb(0, 247, 255);
+    bottom: 4%;
+}
