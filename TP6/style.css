@@ -1,0 +1,47 @@
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    color: white;
+}
+
+.container{
+    width: 100%;
+    height: 70vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.541),rgba(0, 0, 0, 0.512)),url('fond.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.container .rebours{
+    display: flex;
+    position: absolute;
+    gap: 3rem;
+    left: 20%;
+    top: 8%;
+}
+
+.container .rebours h1{
+    font-size: 5rem;
+}
+
+.container .rebours legend{
+    text-align: center;
+    font-size: 2rem;
+}
+
+
+.container .title{
+    font-size: 7rem;
+    position: absolute;
+    top: 60%;
+    left: 25%;
+}

@@ -29,12 +29,16 @@ const quizz = [
 
 
 const question = document.getElementById('question');
-const answerls = document.querySelectorAll('.answer')
+const inputs = document.querySelectorAll('input')
 const a_text = document.getElementById('a_text')
 const b_text = document.getElementById('b_text')
 const c_text = document.getElementById('c_text')
 const d_text = document.getElementById('d_text')
 const suivant = document.getElementById('next');
+const rejouer = document.getElementById('reload');
+const notif = document.querySelector('.notification');
+const notif_text = document.querySelector('.notification h2');
+const btn_button = document.querySelector('.btn button')
 
 let quizz_actuel=0;
 let score = 0;
@@ -53,14 +57,14 @@ function chargementQuizz(){
 
 
 function removeChoix(){
-    answerls.forEach(answerl => answerl.checked =false);
+    inputs.forEach(input => input.checked =false);
 }
 
 function getSelected(){
     let answer;
-    answerls.forEach(answerl=>{
-        if(answerl.checked){
-           answer = answerl.id
+    inputs.forEach(input=>{
+        if(input.checked){
+           answer = input.id
         }
     })
     return answer;
@@ -78,12 +82,19 @@ suivant.addEventListener('click',()=>{
             chargementQuizz();
         }
         else{
-            console.log(score);
+            resultat(score,quizz.length);
+            rejouer.addEventListener('click',()=>{
+                location.reload();
+            });
         }
     }
 })
 
 
+function resultat(score,nbr_question){
+notif.style.display="flex";
+notif_text.textContent=`votre score est de ${score} / ${nbr_question}`;
+}
 
 
 
@@ -122,19 +133,8 @@ suivant.addEventListener('click',()=>{
 
 
 
-/********************************************************* */
 
-// let flex2 = document.createElement('div');
-// flex2.className="flex";
-// form.appendChild(flex2);
 
-// let input2 = document.createElement('input');
-// input2.type = "radio"
-// input2.name="question"
-// flex2.appendChild(input2);
 
-// let label2 = document.createElement('label');
-// label2.textContent=quizz[0].b;
-// flex2.appendChild(label2);
 
 

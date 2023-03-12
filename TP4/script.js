@@ -56,7 +56,7 @@ function afficher_mot_de_passe(){
     var mot_de_passe="";
     let i=0
     if(taille_password<3 || taille_password >20){
-        alert("la longueur du password doit etre compris entre 3 et 20");
+        notification("la longueur du password doit etre compris entre 3 et 20")
     }
     else{
         if(majiscule.checked){
@@ -79,7 +79,7 @@ function afficher_mot_de_passe(){
         }
     
         if(i>taille_password){
-            alert("erreur");
+            notification('le nombre cocher ne peut pas etre superieur a la longueur du password');
         }
         else{
             for(let i =mot_de_passe.length; i<taille_password;i++){
@@ -88,7 +88,7 @@ function afficher_mot_de_passe(){
             }
     
             if(mot_de_passe.length>taille_password){
-                alert("vous devez selectionner au moins une case ");
+                notification('vous devez selectionner au moins une case')
             }
             else{
                 Affichage.value=mot_de_passe;
