@@ -1,4 +1,5 @@
 const quizz = [
+    
     {
         Question:"Quel est le meilleur langage de programmation en 2022",
         a:"Java",
@@ -11,7 +12,7 @@ const quizz = [
     {
         Question:"En quelle annee est cree le langage de programmation javascript",
         a:"2019",
-        b:"1997",
+        b:"1996",
         c:"1970",
         d:"2002",
         reponse:"b"
@@ -25,6 +26,24 @@ const quizz = [
         d: "klaxonner",
         reponse: "a"
     },
+
+    {
+        Question:"À quoi servent les directives de préprocesseur, vous savez, ces lignes qui commencent par  #include  ?",
+        a:"Elles demandent d'inclure des fichiers au projet, c'est-à-dire d'ajouter des fichiers pour la compilation.",
+        b:"Elles représentent des fonctions et rassemblent plusieurs commandes demandées à l'ordinateur.",
+        c:"Elles permettent d'allouer la mémoire nécessaire pour le programme lors de la compilation.",
+        d:"Elles permettent d'inclure le compilateur dans le projet afin de créer un exécutable.",
+        reponse: "a"
+    },
+    {
+        Question:"En JavaScript, un object est déclaré comme une liste de paires clé/valeur entre…",
+        a:"{}  accolades.",
+        b:"[]  crochets.",
+        c:"()  parenthèses.",
+        d:"aucune des réponses ci-dessus.",
+        reponse:"a"
+    },
+
 ]
 
 
@@ -43,7 +62,8 @@ const btn_button = document.querySelector('.btn button')
 let quizz_actuel=0;
 let score = 0;
 
-chargementQuizz()
+chargementQuizz();
+
 
 function chargementQuizz(){
     removeChoix();
@@ -70,6 +90,7 @@ function getSelected(){
     return answer;
 }
 
+
 suivant.addEventListener('click',()=>{
     const answer = getSelected();
     if(answer){
@@ -95,6 +116,7 @@ function resultat(score,nbr_question){
 notif.style.display="flex";
 notif_text.textContent=`votre score est de ${score} / ${nbr_question}`;
 }
+
 
 
 

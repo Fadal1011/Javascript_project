@@ -14,7 +14,7 @@ let notif = document.querySelector('.alerts')
 const lettreMinuscule="abcdefghijklmnopqrstuvwxyz";
 const lettreMajiscule="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const nbr = "1234567890";
-const carac="!@#$%&*_+=";
+const carac="!@#$%&*_+=^][(){}¤£§";
 
 function CaracMin(){
         return lettreMinuscule[Math.floor(Math.random() * lettreMinuscule.length)];
@@ -52,7 +52,11 @@ function genererP(){
 
 
 function afficher_mot_de_passe(){
-    let taille_password = document.querySelector('#taille_p').value;
+    let taille_password =document.querySelector('#taille_p').value;
+    if(isNaN(taille_password)){
+        alert('erreur')
+    }
+   else{
     var mot_de_passe="";
     let i=0
     if(taille_password<3 || taille_password >20){
@@ -91,12 +95,15 @@ function afficher_mot_de_passe(){
                 notification('vous devez selectionner au moins une case')
             }
             else{
-                Affichage.value=mot_de_passe;
+
+                let mdp = shuffle(mot_de_passe);
+                Affichage.value =mdp.join('');
             }
         }
     }
   
 
+   }
     
    
 }
@@ -134,6 +141,23 @@ document.querySelector('.message h1').textContent=message;
 setTimeout(()=>{
     notif.style.clipPath="polygon(55% 0, 55% 0, 54% 100%, 54% 100%)";
 },3000)
+}
+
+function shuffle(array){
+    let shuffles_array=[];
+    let usedIndex=[];
+
+    let i = 0;
+
+    while(i<array.length){
+        let randomNumber = Math.floor(Math.random() * array.length);
+        if(!usedIndex.includes(randomNumber)){
+            shuffles_array.push(array[randomNumber])
+            usedIndex.push(randomNumber)
+            i++
+        }
+    }
+    return shuffles_array;
 }
 
 

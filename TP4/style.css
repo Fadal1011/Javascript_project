@@ -21,6 +21,10 @@ body{
     color: white;
 }
 
+#taille_p{
+    width: 3rem;
+}
+
 .container .box{
     width: 93%;
     position: relative;

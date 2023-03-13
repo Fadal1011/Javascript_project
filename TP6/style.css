@@ -9,13 +9,12 @@ body{
     overflow: hidden;
     display: flex;
     align-items: center;
-    color: white;
 }
 
 .container{
     width: 100%;
     height: 70vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.541),rgba(0, 0, 0, 0.512)),url('fond.jpg');
+    background:url('fond.jpg');
     background-size: cover;
     background-position: center;
     position: relative;
@@ -25,12 +24,13 @@ body{
     display: flex;
     position: absolute;
     gap: 3rem;
-    left: 20%;
-    top: 8%;
+    left:50%;
+    top: 60%;
+    transform: translate(-50%,-50%);
 }
 
 .container .rebours h1{
-    font-size: 5rem;
+    font-size: 7rem;
 }
 
 .container .rebours legend{
@@ -42,6 +42,6 @@ body{
 .container .title{
     font-size: 7rem;
     position: absolute;
-    top: 60%;
+    top: 10%;
     left: 25%;
 }
