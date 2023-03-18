@@ -79,6 +79,7 @@ form.addEventListener('input',()=>{
     console.log(mot);
     if(mot){
         getMovie(SEARCHAPI+mot);
+        console.log(SEARCHAPI+mot)
     }
     if(mot.length==0){
         getMovie(APIURL);
