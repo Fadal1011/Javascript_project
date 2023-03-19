@@ -17,13 +17,14 @@ setTimeout(() => {
     chargement();
 },5000);
 
-getMovie(`${APIURL+i+1}`);
+getMovie(APIURL+i+1);
 window.addEventListener('scroll',()=>{
     const {scrollTop,scrollHeight,clientHeight} = document.documentElement
 
     if(scrollTop + clientHeight == scrollHeight){
          setTimeout(() => {
-            getMovie(`${APIURL + i++}`);
+            getMovie(APIURL + i++);
+            console.log('hgjhb')
          },2000);
     }
 })
