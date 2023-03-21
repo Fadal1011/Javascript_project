@@ -7,50 +7,50 @@ const select=[
 ]
 
 const tabObjet =[
-//     {
-//          n:"aly",
-//          M:"javascript",
-//          s:"101",
-//          d:8,
-//          f:11,
-//          j:"vendredi"
-//     },
+    {
+         n:"aly",
+         M:"javascript",
+         s:"101",
+         d:8,
+         f:11,
+         j:"vendredi"
+    },
 
-//     {
-//         n:"Wane",
-//        M:"PHP",
-//        s:"103",
-//        d:10,
-//         f:15,
-//         j:"mardi"
-//     },
+    {
+        n:"Wane",
+       M:"PHP",
+       s:"103",
+       d:10,
+        f:15,
+        j:"mardi"
+    },
 
-//     {
-//         n:"Mbaye",
-//        M:"java",
-//        s:"incub",
-//        d:12,
-//         f:14,
-//         j:"jeudi"
-//   },
+    {
+        n:"Mbaye",
+       M:"java",
+       s:"incub",
+       d:12,
+        f:14,
+        j:"jeudi"
+  },
 
-//   {
-//     n:"FALL",
-//    M:"python",
-//    s:"105",
-//    d:12,
-//     f:14,
-//     j:"lundi"
-// },
+  {
+    n:"FALL",
+   M:"python",
+   s:"105",
+   d:12,
+    f:14,
+    j:"lundi"
+},
 
-// {
-//     n:"Aly",
-//    M:"Ruby",
-//    s:"incub",
-//    d:16,
-//     f:17,
-//     j:"samedi"
-// },
+{
+    n:"Aly",
+   M:"Ruby",
+   s:"incub",
+   d:16,
+    f:17,
+    j:"samedi"
+},
 ]
 
 const color = ["red","blue","green","orange","purple","pink","yellow","brown","gray","black","#FFA500","#008000","#800080","#FFC0CB","#00FFFF","#0000FF","#FF00FF","#00FF00","#FF0000","#000000"];
@@ -128,8 +128,15 @@ confirmer.addEventListener('click',()=>{
      nom = Enseign.value;
      Modul = Modules.value;
      sal = Salles.value;
+     if(h_debut > h_fin || h_debut == h_fin){
+        alert('erreur')
+     }
+
+     else{
         h_debut = H_debut.value;
         h_fin = H_fin.value;
+    }
+
    objet ={
        n:nom,
        M:Modul,

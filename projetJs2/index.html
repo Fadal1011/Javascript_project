@@ -16,7 +16,7 @@
             </form>
 
             <div class="categorie">
-                <div class="box Enseign">
+                <div class="box" id="Enseign">
                    <div class="row">
                         <div class="icon">
                             <i class="fa-solid fa-person-chalkboard"></i>
@@ -29,7 +29,7 @@
                     </div>
                 </div>
 
-                <div class="box salles">
+                <div class="box" id="salles">
                     <div class="row">
                          <div class="icon">
                             <i class="fa-solid fa-house-user"></i>
@@ -42,7 +42,7 @@
                      </div>
                  </div>
                  
-                 <div class="box Classes">
+                 <div class="box" id="classes">
                     <div class="row">
                          <div class="icon">
                             <i class="fa-solid fa-users"></i>
@@ -55,7 +55,7 @@
                      </div>
                  </div>
 
-                 <div class="box Modules">
+                 <div class="box" id="modules">
                     <div class="row">
                          <div class="icon">
                             <i class="fa-solid fa-trash"></i>
@@ -106,7 +106,7 @@
             </div>
 
             <div class="cal" id="lundi">
-                <div class="jour" id="lundi">
+                <div class="jour">
                     lundi <span>+</span>
                 </div>
                 <div class="cours">
@@ -118,40 +118,40 @@
                 </div>
             </div>
             <div class="cal" id="mardi">
-                <div class="jour" id="mardi">
+                <div class="jour">
                     Mardi <span>+</span>
                 </div>
                 <div class="cours"></div>
             </div>
             <div class="cal" id="mercredi">
-                <div class="jour" id="mercredi">
+                <div class="jour">
                     Mercredi <span>+</span>
                 </div>
                 <div class="cours"></div>
             </div>
 
             <div class="cal" id="jeudi">
-                <div class="jour" id="jeudi">
+                <div class="jour">
                     Jeudi <span>+</span>
                 </div>
                 <div class="cours"></div>
             </div>
 
             <div class="cal" id="vendredi">
-                <div class="jour" id="vendredi">
+                <div class="jour">
                     Vendredi <span>+</span>
                 </div>
                 <div class="cours"></div>
             </div>
 
             <div class="cal" id="samedi">
-                <div class="jour" id="samedi">
-                    Samedi <span>+</span>
+                <div class="jour">
+                    Samedii <span>+</span>
                 </div>
                 <div class="cours"></div>
             </div>
             <div class="cal" id="dimanche">
-                <div class="jour" id="dimanche">
+                <div class="jour">
                     Dimanche <span>+</span>
                 </div>
                 <div class="cours"></div>
@@ -165,36 +165,36 @@
         </div>
 
         <div class="form">
-            <div class="flex">
-                <label for="">Modules</label>
-                <select name="" id="Modules" required>
-                    <option value="">choisir un modules</option>
-                </select>
-            </div>
+
             <div class="flex">
                 <label for="">Enseign</label>
-                <select name="" id="Enseign" required>
+                <select name="" id="enseign">
                     <option value="">choisir un enseignant</option>
                 </select>
             </div>
 
             <div class="flex">
+                <label for="">Modules</label>
+                <select name="" id="Modules">
+                </select>
+            </div>
+            <div class="flex">
                 <label for="">Salle</label>
-                <select name="" id="Salle" required>
+                <select name="" id="Salle">
                     <option value="">choisir une salles</option>
                 </select>
             </div>
             <div class="flex">
                 <label for="">Heure de debut</label>
-                <select name="" id="H_debut" required>
+                <select name="" id="debut">
                     <option value="">choisir un heure de debut</option>
                 </select>
             </div>
 
             <div class="flex">
-                <label for="">Heure de fin</label>
-                <select name="" id="H_fin">
-                    <option value="">choisir un heure de fin</option>
+                <label for="">duree</label>
+                <select name="" id="fin">
+                    <option value="">choisir le duree du cours</option>
                 </select>
             </div>
         </div>
@@ -205,7 +205,7 @@
         </div>
     </div>
     
-
+    <script src="fonction.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

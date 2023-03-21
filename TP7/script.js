@@ -24,7 +24,6 @@ window.addEventListener('scroll',()=>{
     if(scrollTop + clientHeight == scrollHeight){
          setTimeout(() => {
             getMovie(APIURL + i++);
-            console.log('hgjhb')
          },2000);
     }
 })
@@ -35,7 +34,6 @@ async function getMovie(url){
    await fetch(url)
     .then(async res =>await res.json())
     .then(data=>{
-        console.log(data.results)
         affiche_film(data.results)
     })
 }
