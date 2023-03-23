@@ -50,6 +50,9 @@ const dur=[
 
 const plannings =[]
 
+const color = ["red","blue","green","orange","purple","pink","yellow","brown","gray","black","#FFA500","#008000","#800080","#FFC0CB","#00FFFF","#0000FF","#FF00FF","#00FF00","#FF0000","#000000"];
+
+
 
 const boxs = document.querySelectorAll('.box');
 const select = document.getElementById('select');

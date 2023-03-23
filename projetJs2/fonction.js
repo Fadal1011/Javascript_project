@@ -62,6 +62,8 @@ function ajout_planning(){
             cours[i].appendChild(plan);
             // var interval = plannings[j].f - plannings[j].d ;
             plan.style.width=`${plannings[j].f * 10}%`
+            c = color[Math.floor(Math.random() * color.length)];
+                plan.style.background=`${c}`;
 
             if(plannings[j].d == 8){
                 plan.style.left="0%"
@@ -111,7 +113,7 @@ function rechercher(plannings,objet){
 
 function inter(){
     for (let i = 0; i < plannings.length; i++){
-        if(plannings[i].fini > objet.d && plannings[i].d < objet.d && plannings[i].j == objet.j){
+        if(plannings[i].fini > objet.d && plannings[i].d < objet.d && plannings[i].j == objet.j || objet.d < plannings[i].d && plannings[i].d < objet.fini){
             return false
         } 
         else{
