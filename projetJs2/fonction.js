@@ -107,11 +107,18 @@ function rechercher(plannings,objet){
     return plannings.find(planning => planning.j === objet.j && planning.d == objet.d);
 }
 
-function horraire(objet){
 
-        
+
+function inter(){
+    for (let i = 0; i < plannings.length; i++){
+        if(plannings[i].fini > objet.d && plannings[i].d < objet.d && plannings[i].j == objet.j){
+            return false
+        } 
+        else{
+            return true
+        }
+    }
 }
-
 
 
 
