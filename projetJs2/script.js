@@ -7,10 +7,10 @@ const Enseign=[
 
 const modules=[
 
-    {id:1,nom:"algo"},
-    {id:2,nom:"jascript"},
-    {id:3,nom:"php"},
-    {id:4,nom:"python"}
+    {id:1,nom:"algo", Enseign:[1]},
+    {id:2,nom:"jascript",Enseign:[1,2]},
+    {id:3,nom:"php", Enseign:[1,3,4]},
+    {id:4,nom:"python",Enseign:[2]}
 ]
 
 const salles=[
@@ -84,42 +84,50 @@ var objet ={}
 var mo=[];
 
 
-select.addEventListener
-
 for (let i = 0; i < boxs.length; i++){
     boxs[i].addEventListener('click',()=>{
         if(boxs[i].id=='modules'){
+            Enseignant.innerHTML=''
             chargerSelect(modules,select,'Selectionner un modules');
+            selectProf3();
             identifiant = boxs[i].id;
             document.querySelector('.box4').style.display="none"
-            document.querySelector('.box1,.box2').style.display="flex"
+            document.querySelector('.box1').style.display="flex"
+            document.querySelector('.box2').style.display="flex"
             document.querySelector('.box3').style.display="flex"
             console.log(identifiant)
         }
         if(boxs[i].id=='Enseign'){
             identifiant = boxs[i].id;
-            chargerSelect(Enseign,select,'Selectionner un Enseign');
+            chargerSelect(Enseign,select,'Selectionner un enseignant');
+            selectProf4();
             document.querySelector('.box1').style.display="none"
-            document.querySelector('.box2,.box3').style.display="flex"
+            document.querySelector('.box2').style.display="flex"
+            document.querySelector('.box3').style.display="flex"
             document.querySelector('.box4').style.display="flex"
             console.log(identifiant)
         }
         if(boxs[i].id=='classes'){
             identifiant = boxs[i].id;
+            Module.innerHTML='';
             chargerSelect(classes,select,'Selectionner un classes');
             document.querySelector('.box3').style.display="none"
             document.querySelector('.box1').style.display="flex"
             document.querySelector('.box2').style.display="flex"
             document.querySelector('.box4').style.display="flex"
-            console.log(identifiant)
+            chargerSelect(Enseign,Enseignant);
+            selectProf();
         }
         if(boxs[i].id=='salles'){
             identifiant = boxs[i].id;
+            Module.innerHTML='';
             chargerSelect(salles,select,'Selectionner un salles');
             document.querySelector('.box2').style.display="none"
             document.querySelector('.box1').style.display="flex"
             document.querySelector('.box3').style.display="flex"
             document.querySelector('.box4').style.display="flex"
+        chargerSelect(Enseign,Enseignant);
+        selectProf();
         }
 
     })
@@ -130,6 +138,7 @@ for (let i = 0; i < boxs.length; i++){
 
 for (let i = 0; i < jours.length; i++) {
    jours[i].addEventListener('click',()=>{
+    Module.innerHTML=''
     ajout.style.display="block";
     jour = cal[i].id;
    })  
@@ -143,10 +152,21 @@ annuler.addEventListener('click',()=>{
 
 
 
+    chargerSelect(Enseign,Enseignant);
+    selectProf();
 
-chargerSelect(Enseign,Enseignant);
 
-selectProf()
+// chargerSelect(Enseign,Enseignant);
+// selectProf();
+
+// // chargerSelect(modules,Module);
+// selectProf2();
+
+
+
+
+
+
 
 chargerSelect(classes,classe);
 chargerSelect(salles,salle);
@@ -159,14 +179,21 @@ chargerSelect(dur,fin)
 
 confirme.addEventListener('click',()=>{
      nom = Enseignant.value;
-     Modul = Module.value;
+    //  Modul = Module.value;
+    
+     if (document.querySelector('.box4').style.display === "none") {
+        Modul = select.value;
+     } else {
+        Modul = Module.value;
+     }
 
      if (document.querySelector('.box2').style.display === "none"){
         sal = select.value;
-     } 
-     else {
+     } else {
         sal = salle.value;
      }
+
+
 
      if (document.querySelector('.box3').style.display === "none") {
         classeValue = select.value

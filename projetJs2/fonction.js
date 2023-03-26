@@ -30,6 +30,60 @@ function creatingElement(elName)
 
 
 
+function selectProf2(){
+    for (let i = 0; i < modules.length; i++){
+    
+        Module.addEventListener('input',()=>{
+            if(Module.value == modules[i].nom){
+                mo.splice(0,mo.length);
+                for (let j = 0; j < modules[i].Enseign.length; j++){
+                   mo.push(getDataById(modules[i].Enseign[j],Enseign)); 
+                }
+            }
+            chargerSelect(mo,Enseignant)
+        })
+        
+    }
+   
+}
+
+
+function selectProf3(){
+    for (let i = 0; i < modules.length; i++){
+    
+        select.addEventListener('input',()=>{
+            if(select.value == modules[i].nom){
+                mo.splice(0,mo.length);
+                for (let j = 0; j < modules[i].Enseign.length; j++){
+                   mo.push(getDataById(modules[i].Enseign[j],Enseign)); 
+                }
+            }
+            chargerSelect(mo,Enseignant)
+        })
+        
+    }
+   
+}
+
+function selectProf4(){
+    for (let i = 0; i < Enseign.length; i++){
+    
+        select.addEventListener('input',()=>{
+            if(select.value == Enseign[i].nom){
+                mo.splice(0,mo.length);
+                for (let j = 0; j < Enseign[i].modules.length; j++){
+                   mo.push(getDataById(Enseign[i].modules[j],modules)); 
+                }
+            }
+            chargerSelect(mo,Module)
+        })
+        
+    }
+   
+}
+
+
+
 function selectProf(){
     for (let i = 0; i < Enseign.length; i++){
     
