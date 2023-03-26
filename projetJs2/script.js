@@ -48,7 +48,7 @@ const dur=[
 ]
 
 
-const plannings =[]
+let plannings =[]
 
 const color = ["red","blue","green","orange","purple","pink","yellow","brown","gray","black","#FFA500","#008000","#800080","#FFC0CB","#00FFFF","#0000FF","#FF00FF","#00FF00","#FF0000","#000000"];
 
@@ -175,11 +175,13 @@ chargerSelect(dur,fin)
 
 
 
-
-
 confirme.addEventListener('click',()=>{
      nom = Enseignant.value;
-    //  Modul = Module.value;
+    if (document.querySelector('.box1').style.display === "none") {
+        nom = select.value;
+    } else {
+        nom = Enseignant.value;
+    }
     
      if (document.querySelector('.box4').style.display === "none") {
         Modul = select.value;
@@ -236,7 +238,15 @@ confirme.addEventListener('click',()=>{
         }
        
         else{
+            const planningsInStorage = localStorage.getItem('plannings');
+            console.log(planningsInStorage.n);
+            
+            if (planningsInStorage){
+                plannings =JSON.parse(planningsInStorage)
+            }
+
             plannings.push(objet);
+            localStorage.setItem('plannings',JSON.stringify(plannings))
             ajout.style.display="none";
             ajout_planning();
         }

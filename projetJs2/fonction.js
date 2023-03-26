@@ -30,22 +30,22 @@ function creatingElement(elName)
 
 
 
-function selectProf2(){
-    for (let i = 0; i < modules.length; i++){
+// function selectProf2(){
+//     for (let i = 0; i < modules.length; i++){
     
-        Module.addEventListener('input',()=>{
-            if(Module.value == modules[i].nom){
-                mo.splice(0,mo.length);
-                for (let j = 0; j < modules[i].Enseign.length; j++){
-                   mo.push(getDataById(modules[i].Enseign[j],Enseign)); 
-                }
-            }
-            chargerSelect(mo,Enseignant)
-        })
+//         Module.addEventListener('input',()=>{
+//             if(Module.value == modules[i].nom){
+//                 mo.splice(0,mo.length);
+//                 for (let j = 0; j < modules[i].Enseign.length; j++){
+//                    mo.push(getDataById(modules[i].Enseign[j],Enseign)); 
+//                 }
+//             }
+//             chargerSelect(mo,Enseignant)
+//         })
         
-    }
+//     }
    
-}
+// }
 
 
 function selectProf3(){
@@ -103,6 +103,7 @@ function selectProf(){
 
 
 function ajout_planning(){
+
     for (let i = 0; i < cal.length; i++) {
       for (let j = 0; j < plannings.length; j++) {
         if(plannings[j].j == cal[i].id){
