@@ -47,8 +47,11 @@ const dur=[
     {id:3,nom:4},
 ]
 
-
-let plannings =[]
+const planningsInStorage = localStorage.getItem('plannings');
+let plannings =[];
+if (planningsInStorage){
+    plannings =JSON.parse(planningsInStorage)
+}
 
 const color = ["red","blue","green","orange","purple","pink","yellow","brown","gray","black","#FFA500","#008000","#800080","#FFC0CB","#00FFFF","#0000FF","#FF00FF","#00FF00","#FF0000","#000000"];
 
@@ -69,9 +72,47 @@ const debut = document.getElementById('debut');
 const fin = document.getElementById('fin');
 const cours = document.querySelectorAll('.cours');
 const titleCours = document.querySelector('.header .title span');
+const Search = document.querySelector('#search input');
+
+
+Search.addEventListener('input',()=>{
+    let search = plannings.filter(function(planning){
+        if (Search.value == planning.n){
+            return true
+        }
+        else if (Search.value == planning.M){
+            return true
+        }
+       else if (Search.value == planning.s){
+            return true
+        }
+       else if (Search.value == planning.c){
+            return true
+        }
+    })
+
+    ajout_planning_for_filter(search);
+})
 
 select.addEventListener('input',()=>{
     titleCours.textContent = select.value;
+    let affichage = plannings.filter(function(planning){
+            
+            if (select.value == planning.n){
+                return true
+            }
+            else if (select.value == planning.M){
+                return true
+            }
+           else if (select.value == planning.s){
+                return true
+            }
+           else if (select.value == planning.c){
+                return true
+            }
+    })
+
+    ajout_planning_for_filter(affichage)
 })
 
 var nom ;
@@ -226,34 +267,28 @@ confirme.addEventListener('click',()=>{
         if(day){
             alert('il existe deja!!')
         }
-        else if(objet.d==14 && objet.f==4 || objet.d==15 && objet.f==3 || objet.d==16 && objet.f==2 || objet.d==17){
+       else if(objet.d==14 && objet.f==4 || objet.d==15 && objet.f==3 || objet.d==16 && objet.f==2 || objet.d==17){
           alert("impossible les cours s'arretent a 17h");
         }
-        else if(objet.n==="Selectionner" || objet.M==="Selectionner" || objet.s==="Selectionner" || objet.f==="Selectionner"){
+        else if(objet.n==="Selectionner" || objet.M==="Selectionner" || objet.s==="Selectionner" || objet.f==="Selectionner" || objet.M===""){
             alert('vous devez remplir les select')
         }
 
         else if(inter()== false){
             alert("false");
         }
+        // else if(isValide()==false){
+        //     alert('le professeur est deja dans un autre salle pour faire cours')
+        // }
        
         else{
-            const planningsInStorage = localStorage.getItem('plannings');
-            console.log(planningsInStorage.n);
-            
-            if (planningsInStorage){
-                plannings =JSON.parse(planningsInStorage)
-            }
-
             plannings.push(objet);
-            localStorage.setItem('plannings',JSON.stringify(plannings))
+            update();
             ajout.style.display="none";
             ajout_planning();
         }
 
 })
-
-
 
 
 

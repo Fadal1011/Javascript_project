@@ -168,7 +168,7 @@ function rechercher(plannings,objet){
 
 function inter(){
     for (let i = 0; i < plannings.length; i++){
-        if(plannings[i].fini > objet.d && plannings[i].d < objet.d && plannings[i].j == objet.j || objet.d < plannings[i].d && plannings[i].d < objet.fini){
+        if(plannings[i].fini > objet.d && plannings[i].d < objet.d && plannings[i].j == objet.j || objet.d < plannings[i].d && plannings[i].d < objet.fini && plannings[i].j == objet.j){
             return false
         } 
         else{
@@ -178,10 +178,87 @@ function inter(){
 }
 
 
+function update(){
+    localStorage.setItem('plannings',JSON.stringify(plannings));
+}
 
 
 
 
+function ajout_planning_for_filter(tab){
+
+    for (let i = 0; i < cal.length; i++) {
+        cours[i].innerHTML='';
+      for (let j = 0; j < tab.length; j++) {
+        if(tab[j].j == cal[i].id){
+            const plan=document.createElement('div');
+            plan.className="plan";
+            plan.innerHTML=`
+                        <div class="nom">${tab[j].n}</div>
+                        <div class="mod">${tab[j].M}</div>
+                        <div class="sal">${tab[j].s}</div>
+            `
+            cours[i].appendChild(plan);
+            // var interval = plannings[j].f - plannings[j].d ;
+            plan.style.width=`${tab[j].f * 10}%`
+            c = color[Math.floor(Math.random() * color.length)];
+                plan.style.background=`${c}`;
+
+            if(tab[j].d == 8){
+                plan.style.left="0%"
+            }
+            if(tab[j].d == 9){
+                plan.style.left="10%"
+            }
+            if(tab[j].d == 10){
+                plan.style.left="20%"
+            }
+            if(tab[j].d == 11){
+                plan.style.left="30%"
+            }
+            if(tab[j].d == 12){
+                plan.style.left="40%"
+            }
+            if(tab[j].d == 13){
+                plan.style.left="50%"
+            }
+            if(tab[j].d == 14){
+                plan.style.left="60%"
+            }
+            if(tab[j].d == 15){
+                plan.style.left="70%"
+            }
+            if(tab[j].d == 16){
+                plan.style.left="80%"
+            }
+        }
+      }
+        
+    }
+}
+
+
+// function isValide(){
+//     for (let i = 0; i < plannings.length; i++) {
+//         if (plannings[i].n === objet.n && plannings[i].j == objet.j && plannings[i].d == objet.d && plannings[i].s != objet.s){
+//             return false
+//         } 
+
+//         else if(plannings[i].d === objet.d && plannings[i].j=== objet.j && planning[i].c == objet.c){
+//             return false
+//         }
+
+//         if(plannings[i].fini > objet.d && plannings[i].d < objet.d && plannings[i].j == objet.j && plannings[i].c === objet.c || objet.d < plannings[i].d && plannings[i].d < objet.fini && plannings[i].j == objet.j && plannings[i].c === objet.c ){
+//             return false
+//         } 
+        
+        
+//         else {
+//             return true
+//         }
+        
+//     }
+// }
 
 
 
