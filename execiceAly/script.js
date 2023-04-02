@@ -1,5 +1,27 @@
 const users =[
     {
+        Profil:'https://images.pexels.com/photos/5615665/pexels-photo-5615665.jpeg?auto=compress&cs=tinysrgb&w=1600',
+        Nom:'Sall',
+        Prenom:'Fatou',
+        Tel :'705675546',
+        Email:'Fatou@gmail.com',
+        Solde:16510,
+        transaction:[
+            {
+                id:8,
+                Date:"10-01-2023",
+                Sens:1,
+                Montant:12000
+            },
+            {
+                id:9,
+                Date:"10-01-2023",
+                Sens:-1,
+                Montant:15000
+            },
+        ],
+    },
+    {
         Profil:'https://images.unsplash.com/photo-1566492031773-4f4e44671857?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
         Nom:'Niang',
         Prenom:'Sidy',
@@ -44,29 +66,6 @@ const users =[
                 Montant:19000
             },
 
-        ],
-    },
-
-    {
-        Profil:'https://images.pexels.com/photos/5615665/pexels-photo-5615665.jpeg?auto=compress&cs=tinysrgb&w=1600',
-        Nom:'Sall',
-        Prenom:'Fatou',
-        Tel :'705675546',
-        Email:'Fatou@gmail.com',
-        Solde:16510,
-        transaction:[
-            {
-                id:8,
-                Date:"10-01-2023",
-                Sens:1,
-                Montant:12000
-            },
-            {
-                id:9,
-                Date:"10-01-2023",
-                Sens:-1,
-                Montant:15000
-            },
         ],
     },
     {
@@ -133,6 +132,9 @@ const users =[
     }
 ]
 
+
+
+
 const suivant = document.querySelector('.next');
 const lastname = document.getElementById('lastname');
 const firstname = document.getElementById('firstname');
@@ -146,10 +148,60 @@ const ajout = document.getElementById('btnDetail');
 const montant_ajout = document.getElementById('mnt');
 const trans = document.getElementById('trans')
 const btn_enreg = document.querySelector('.form button');
+const info  = document.querySelector('.info ');
+const sender = document.getElementById('numero')
+const genererNum = document.querySelector('.genererNum');
+
+const solde = document.createElement('div');
+solde.className="solde";
+info.appendChild(solde);
+
+solde.innerHTML=`
+                <h3>solde actuelle: <span>...</span> Fcfa</h3>
+`
+solde.style.textAlign='center',
+solde.style.background='white',
+solde.style.color='black'
+const montant_solde = document.querySelector('.solde h3 span');
+
+const new_users_nom = document.getElementById("Nom");
+const new_users_prenom = document.getElementById("Prenom");
+const new_users_email = document.getElementById('Email');
+const new_users_tel = document.getElementById('telephone'); 
+const new_users_photo = document.getElementById('photo')
+const new_user_ajout = document.getElementById('ajouter_users');
+const modal = document.querySelector('.modal_Ajout')
+const openModal = document.getElementById('openModal');
+const closeModal = document.getElementById('close');
+
+openModal.addEventListener('click',()=>{
+    modal.style.display="flex"
+})
+
+closeModal.addEventListener('click',()=>{
+    modal.style.display="none"
+})
 
 
+let new_users={}
 
-var numero =16
+new_user_ajout.addEventListener('click',()=>{
+new_users={
+    Profil:new_users_photo.value,
+    Nom:new_users_nom.value,
+    Prenom:new_users_prenom.value,
+    Tel :new_users_tel.value,
+    Email:new_users_email.value,
+    Solde:0,
+    transaction:[]
+}
+
+users.push(new_users);
+console.log(users)
+})
+
+
+var numero =0
 var sens;
 var montant;
 
@@ -157,35 +209,32 @@ var newTran={}
 var index_user;
 
 
+if (navigator.onLine) {
+    loadPage(); 
+}
+window.addEventListener('online',()=>{
+    loadPage();
+});
+
+
+
 suivant.addEventListener('click',()=>{
- let user = users[Math.floor(Math.random() * users.length)];
- lastname.innerText = user.Nom;
- firstname.innerText =user.Prenom;
- phone.innerText = user.Tel;
- email.innerText = user.Email;
- profil.src = `${user.Profil}`;
- nb_transaction.innerText = user.transaction.length;
+ loadPage();
 
- index_user = users.indexOf(user)
-
-
- tbody.innerHTML='';
-
-
-affichage_trans(user.transaction);
 })
 
 
-ajout.addEventListener('click',()=>{
-    form.style.zIndex="-999999999999999999999999999"
-    form.style.transition=".3s linear"
-    form.classList.toggle('show')
+ajout.addEventListener('click',()=>{ 
+   show();
 })
 
 
 
 btn_enreg.addEventListener('click',()=>{
-    var date = "10-12_2022"
+    var jour =new Date().getDate();
+    var mois = new Date().getMonth();
+    var annee =new Date().getFullYear();
+    
     if (trans.value=="r") {
         sens = "-1"
     }
@@ -199,48 +248,121 @@ btn_enreg.addEventListener('click',()=>{
     else if((+montant_ajout.value) > users[index_user].Solde && trans.value==="r"){
         alert("votre solde n'est pas suffisant")
     }
+   
+    else if(trans.value ==='d' && sender.value!=''){
+        if(sende(sender.value) == false){
+            alert("ce numero ne figure pas sur la liste des clients")
+        }
+    }
+    if(sender.value === users[index_user].Tel){
+        alert("on peut pas envoyer de numero sur ce numero actuellement")
+    }
    else{
     montant = montant_ajout.value;
+    numero = numero + 1
     newTran = {
-        id:16,
-        Date:date,
+        id:numero,
+        Date:`${jour}-${mois+1}-${annee}`,
         Sens:sens,
         Montant:montant
     };
-    users[index_user].transaction.push(newTran);
-    // users[index_user].Solde -= newTran.Montant;
-    // console.log("solde actuel:"+users[index_user].Solde)
+    if(trans.value=="r"){
+        users[index_user].Solde -= newTran.Montant;
+        montant_solde.innerText=users[index_user].Solde ;
+    }
+    else if(trans.value=="d" && sender.value.length==0){
+        users[index_user].Solde += (+newTran.Montant);
+        montant_solde.innerText=users[index_user].Solde ;
+    }
+    else if(trans.value=="d" && sender.value.length!=0){
+        users[index_user].Solde -= (+newTran.Montant)
+        montant_solde.innerText=users[index_user].Solde ;
+        for (let i = 0; i < users.length; i++) {
+           if(users[i].Tel ==sender.value){
+                users[i].Solde += (+newTran.Montant);
+           }
+            
+        }
+    }
+ 
+    users[index_user].transaction.push(newTran); 
+    nb_transaction.innerText = users[index_user].transaction.length;
+    
    }
 
-   
-   
     tbody.innerHTML=''
     affichage_trans(users[index_user].transaction);
+    sender.value='';
+
+})
+
+document.body.addEventListener('click',()=>{
+    genererNum.style.display="none";
+})
+
+sender.addEventListener('input',()=>{
+    let taille = sender.value.length;
+    genererNum.innerHTML='';
+    if(sender.value.length > 0){
+        genererNum.style.display="block";
+        let search= users.filter(function(user){
+            let userR=user.Tel.substr(0,taille)
+                 if(sender.value == userR){
+                     return true;
+                 }
+        })
+        for (let i = 0; i < search.length; i++){
+           const r = document.createElement('p');
+           r.innerHTML=search[i].Tel   
+           genererNum.appendChild(r)
+        }
+
+        const p_num = document.querySelectorAll('.genererNum p')
+        console.log(p_num);
+        p_num.forEach(element => {
+            element.addEventListener('click',()=>{
+                sender.value=element.innerText;
+                genererNum.style.display="none";
+            })
+        });
+    }
+    else{
+        genererNum.style.display="none";
+    } 
 })
 
 
-function affichage_trans(tab){
-    for (let i = 0; i < tab.length; i++) {
-        const tr = document.createElement('tr');
-        tbody.appendChild(tr);
-        const td_number = document.createElement('td');
-        const td_Date = document.createElement('td');
-        const td_sens = document.createElement('td');
-        const td_montant = document.createElement('td');
+
+const searchUsers = document.querySelector('.searchUsers');
+const search = document.getElementById('search');
+
+
+search.addEventListener('click',()=>{
+    for (let i = 0; i < users.length; i++) {
+        if (searchUsers.value === users[i].Tel) {
+           affichage_user(users[i]);
+        }
         
-        td_number.innerText = tab[i].id;
-        td_Date.innerText = tab[i].Date;
-        td_sens.innerText =tab[i].Sens;
-        td_montant.innerText = tab[i].Montant;
-    
-        tr.appendChild(td_number);
-        tr.appendChild(td_Date);
-        tr.appendChild(td_sens);
-        tr.appendChild(td_montant);
-    
-     }
-}
+    }
+})
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

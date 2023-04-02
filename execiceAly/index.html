@@ -5,11 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>S01</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container dflex jcc aic fdc">
         <div class="card">
+        
             <div class="infos dflex">
                 <div class="info flex2 dflex fdc jcsb">
                     <div class="row dflex jcsb aic">
@@ -30,11 +32,11 @@
                     </div>
                 </div>
                 <div class="photo flex1">
-                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="...">
+                    <img src="https://st4.depositphotos.com/1216158/25285/i/600/depositphotos_252859028-stock-photo-no-signal-no-connection-vector.jpg" alt="...">
                 </div>
             </div>
             <hr>
-            <div class="transactions dflex fdc">
+            <div class="transactions fdc">
                 <div class="title" style="flex: 3;">
                     <span>Transactions (<code>...</code>)</span>
                     <span id="btnDetail" class="btn-detail">+</span>
@@ -73,16 +75,50 @@
                         <option value="r">Retrait</option>
                     </select>
                 </div>
+
+                <div class="form-group">
+                    <label for="numero">Numero a envoyer</label>
+                    <input type="text" id="numero" placeholder="Numero..." class="from-control">
+                    <div class="genererNum">
+                        <!-- <p><span>Fadal:</span>772246127</p>
+                        <p><span>Fadal:</span>772246127</p>
+                        <p><span>Fadal:</span>772246127</p> -->
+                    </div>
+                </div>
+                   
                 <button type="button">Enregistrer</button>
+            </div>
+
+            <i class="fa-solid fa-plus" id="openModal"></i>
+            <div id="searchUsers">
+                <input type="search" placeholder="search............" class="searchUsers">
+                <input type="submit" value="search" id="search">
             </div>
         </div>
         <div class="navigation">
             <button type="button" class="next"> suivant </button>
         </div>
+        
     </div>
 
+    <div class="modal_Ajout">
+        <i class="fa-solid fa-rectangle-xmark" id="close"></i>
+        <div class="form_modal">
+            <label for="Nom">Nom:</label>
+            <input type="text" id="Nom">
+            <label for="Prenom">Prenom:</label>
+            <input type="text" id="Prenom">
+            <label for="Email">Email:</label>
+            <input type="email" id="Email">
+            <label for="telephone">telephone:</label>
+            <input type="text" id="telephone">
+            <label for="photo">Lien photo</label>
+            <input type="text" id="photo">
+            <input type="submit" value="Ajouter un utilisateur" id="ajouter_users">
+        </div>
+    </div>
 
-    
+    <script src="function.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

@@ -10,6 +10,7 @@ body{
 .container{
     width: 100%;
     height: 100vh;
+    position: relative;
    
 }
 .dflex{
@@ -124,7 +125,7 @@ select{
     border-radius: 5px;
 }
 
-.form button{
+.form button,.envoyer{
     width: 100%;
     background-color: #06293D;
     color: #E5E8E9;
@@ -165,5 +166,108 @@ tr,td{
 
 
 .show{
-    margin-left: -30%;
+    display: none;
+}
+
+.transactions{
+    height: 55%;
+    overflow-y: scroll;
+}
+
+.genererNum{
+    background: rgb(85, 85, 85);
+    position: absolute;
+    width: 90%;
+    border-radius: .5rem;
+    text-align: center;
+    display: none;
+}
+
+
+.modal_Ajout{
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    background: rgba(0, 0, 0, 0.462);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+
+}
+
+.modal_Ajout .form_modal{
+    max-width: 700px;
+    background: #27566B;
+    padding: 1rem;
+   
+}
+
+.modal_Ajout .form_modal label{
+color: white;
+font-size: 2rem;
+}
+
+.modal_Ajout .form_modal input{
+    width: 100%;
+    height: 3rem;
+    margin: 1rem 0;
+    outline: none;
+    background: none;
+    border: none;
+    border-bottom: solid .3rem rgba(128, 128, 128, 0.424);
+}
+
+.fa-rectangle-xmark{
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    font-size: 4rem;
+    color: white;
+    cursor: pointer;
+}
+
+#ajouter_users{
+    background: #799eb0;
+    color: white;
+    font-size: 2rem;
+    height: 4rem;
+    border: none;
+}
+
+.fa-plus{
+    font-size: 3rem;
+    position: absolute;
+    padding: 10px;
+    top: 0;
+    right:100%;
+    background-color: #27566B;
+}
+
+#searchUsers{
+    position: absolute;
+    bottom: 100%;
+    right: 0;
+    width: 600px;
+    background-color: #27566B;
+    height: 3rem;
+    display: flex;
+}
+
+#searchUsers input{
+    width: 100%;
+    height: 100%;
+    background: none;
+    outline: none;
+    color: white;
+    font-size: 1.4rem;
+    padding: 0 1rem;
+}
+
+#searchUsers #search{
+    width: 6rem;
+    background: #799eb0;
+    cursor: pointer;
 }
