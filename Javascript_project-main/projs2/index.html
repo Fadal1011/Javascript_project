@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="dashboard">
+            <form action="" id="search">
+                <input type="search">
+            </form>
+
+            <div class="categorie">
+                <div class="box Enseign">
+                   <div class="row">
+                        <div class="icon">
+                            <i class="fa-solid fa-person-chalkboard"></i>
+                        </div>
+                        <div class="nombre">6</div>
+                   </div>
+                    <div class="row">
+                        <div class="ca">Enseign.</div>
+                        <div class="plus">+</div>
+                    </div>
+                </div>
+
+                <div class="box salles">
+                    <div class="row">
+                         <div class="icon">
+                            <i class="fa-solid fa-house-user"></i>
+                         </div>
+                         <div class="nombre">6</div>
+                    </div>
+                     <div class="row">
+                         <div class="ca">Salles</div>
+                         <div class="plus">+</div>
+                     </div>
+                 </div>
+                 
+                 <div class="box Classes">
+                    <div class="row">
+                         <div class="icon">
+                            <i class="fa-solid fa-users"></i>
+                         </div>
+                         <div class="nombre">6</div>
+                    </div>
+                     <div class="row">
+                         <div class="ca">Classes</div>
+                         <div class="plus">+</div>
+                     </div>
+                 </div>
+
+                 <div class="box Modules">
+                    <div class="row">
+                         <div class="icon">
+                            <i class="fa-solid fa-trash"></i>
+                         </div>
+                         <div class="nombre">6</div>
+                    </div>
+                     <div class="row">
+                         <div class="ca">Modules</div>
+                         <div class="plus">+</div>
+                     </div>
+                 </div>
+            </div>
+
+            <select name="" id="select">
+                <!-- <option value=""></option>
+                <option value="aly">Aly</option>
+                <option value="wane">Wane</option>
+                <option value="mbaye">Mbaye</option>
+                <option value="Doumbia">Doumbia</option>
+                <option value="gaye">Gaye</option> -->
+            </select>
+        </div>
+        <div class="planning">
+            <div class="header">
+                <div class="title">
+                    <h1>Planning:<span>L2 CDSD</span></h1>
+                    <legend>4 cours</legend>
+                </div>
+                <div class="theme">
+                    <div></div>
+                </div>
+            </div>
+
+            <div class="horaire">
+                <div class="espace"></div>
+                <div class="heure">
+                    <div>8H</div>
+                    <div>9H</div>
+                    <div>10H</div>
+                    <div>11H</div>
+                    <div>12H</div>
+                    <div>13H</div>
+                    <div>14H</div>
+                    <div>15H</div>
+                    <div>16H</div>
+                    <div>17H</div>
+                </div>
+            </div>
+
+            <div class="cal" id="lundi">
+                <div class="jour" id="lundi">
+                    lundi <span>+</span>
+                </div>
+                <div class="cours">
+                    <!-- <div class="plan">
+                        <div class="nom">Aly</div>
+                        <div class="mod">PHP</div>
+                        <div class="sal">104</div>
+                    </div> -->
+                </div>
+            </div>
+            <div class="cal" id="mardi">
+                <div class="jour" id="mardi">
+                    Mardi <span>+</span>
+                </div>
+                <div class="cours"></div>
+            </div>
+            <div class="cal" id="mercredi">
+                <div class="jour" id="mercredi">
+                    Mercredi <span>+</span>
+                </div>
+                <div class="cours"></div>
+            </div>
+
+            <div class="cal" id="jeudi">
+                <div class="jour" id="jeudi">
+                    Jeudi <span>+</span>
+                </div>
+                <div class="cours"></div>
+            </div>
+
+            <div class="cal" id="vendredi">
+                <div class="jour" id="vendredi">
+                    Vendredi <span>+</span>
+                </div>
+                <div class="cours"></div>
+            </div>
+
+            <div class="cal" id="samedi">
+                <div class="jour" id="samedi">
+                    Samedi <span>+</span>
+                </div>
+                <div class="cours"></div>
+            </div>
+            <div class="cal" id="dimanche">
+                <div class="jour" id="dimanche">
+                    Dimanche <span>+</span>
+                </div>
+                <div class="cours"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ajout">
+        <div class="modal-title">
+            <h1>Modal Title</h1>
+        </div>
+
+        <div class="form">
+            <div class="flex">
+                <label for="">Modules</label>
+                <select name="" id="Modules" required>
+                    <option value="">choisir un modules</option>
+                </select>
+            </div>
+            <div class="flex">
+                <label for="">Enseign</label>
+                <select name="" id="Enseign" required>
+                    <option value="">choisir un enseignant</option>
+                </select>
+            </div>
+
+            <div class="flex">
+                <label for="">Salle</label>
+                <select name="" id="Salle" required>
+                    <option value="">choisir une salles</option>
+                </select>
+            </div>
+            <div class="flex">
+                <label for="">Heure de debut</label>
+                <select name="" id="H_debut" required>
+                    <option value="">choisir un heure de debut</option>
+                </select>
+            </div>
+
+            <div class="flex">
+                <label for="">Heure de fin</label>
+                <select name="" id="H_fin">
+                    <option value="">choisir un heure de fin</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="action">
+            <button class="submit">AJOUTER</button>
+            <button class="Annuler">Annuler</button>
+        </div>
+    </div>
+    
+
+    <script src="script.js"></script>
+</body>
+</html>

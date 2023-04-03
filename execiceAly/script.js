@@ -184,6 +184,7 @@ closeModal.addEventListener('click',()=>{
 
 
 let new_users={}
+const pattern=/^[0-9]+$/
 
 new_user_ajout.addEventListener('click',()=>{
 new_users={
@@ -196,8 +197,31 @@ new_users={
     transaction:[]
 }
 
-users.push(new_users);
-console.log(users)
+if(confirmUsers(users,new_users)==false){
+    notif("numero ou email deja utiliser");
+}
+else if(new_users.Profil=='' || new_users.Nom =='' || new_users.Prenom=='' || new_users.Tel=='' || new_users.Email==''){
+    notif('vous devez remplir tous le formulaire')
+}
+
+else if(validateEmail(new_users.Email)==false){
+        notif('mail invalide')
+}
+
+
+else if(new_users.Tel.length != 9){
+    notif('ce nemero ne peux pas etre accepter');
+}
+else if(isValide()==false){
+    notif('numero invalide');
+}
+else if(pattern.test(new_users.Tel) == false){
+    notif('le numero contient des caracteres');
+}
+else{
+    users.push(new_users);
+    modal.style.display="none"
+}
 })
 
 
@@ -241,22 +265,18 @@ btn_enreg.addEventListener('click',()=>{
     else if(trans.value=="d"){
         sens = "1"
     }
+    
 
-    if((+montant_ajout.value) < 500){
-        alert('le montant de depot ou de retrait doit etre superieur a 500 fcfa')
-    }
-    else if((+montant_ajout.value) > users[index_user].Solde && trans.value==="r"){
-        alert("votre solde n'est pas suffisant")
-    }
-   
-    else if(trans.value ==='d' && sender.value!=''){
-        if(sende(sender.value) == false){
-            alert("ce numero ne figure pas sur la liste des clients")
-        }
-    }
-    if(sender.value === users[index_user].Tel){
-        alert("on peut pas envoyer de numero sur ce numero actuellement")
-    }
+
+
+   if(no_envoie()==false){
+    return false
+   }
+   else if(sender.value === users[index_user].Tel){
+    notif("on peut pas envoyer de numero sur ce numero actuellement");
+    return false;
+}
+  
    else{
     montant = montant_ajout.value;
     numero = numero + 1
@@ -266,33 +286,38 @@ btn_enreg.addEventListener('click',()=>{
         Sens:sens,
         Montant:montant
     };
+    
     if(trans.value=="r"){
         users[index_user].Solde -= newTran.Montant;
         montant_solde.innerText=users[index_user].Solde ;
     }
-    else if(trans.value=="d" && sender.value.length==0){
+   if(trans.value=="d" && sender.value.length==0){
         users[index_user].Solde += (+newTran.Montant);
         montant_solde.innerText=users[index_user].Solde ;
     }
-    else if(trans.value=="d" && sender.value.length!=0){
+    if(trans.value=="d" && sender.value.length!=0){
         users[index_user].Solde -= (+newTran.Montant)
         montant_solde.innerText=users[index_user].Solde ;
-        for (let i = 0; i < users.length; i++) {
-           if(users[i].Tel ==sender.value){
-                users[i].Solde += (+newTran.Montant);
-           }
-            
-        }
+        newTran.Sens='2';
     }
- 
-    users[index_user].transaction.push(newTran); 
-    nb_transaction.innerText = users[index_user].transaction.length;
     
+    if(trans.value=="d" && sender.value.length!=0){
+    for (let i = 0; i < users.length; i++) {
+        if(users[i].Tel ==sender.value){
+             users[i].Solde += (+newTran.Montant);
+             users[i].transaction.push(newTran);
+        }
+         
+     }
+    }
+    users[index_user].transaction.push(newTran);
+    nb_transaction.innerText = users[index_user].transaction.length;
    }
 
     tbody.innerHTML=''
     affichage_trans(users[index_user].transaction);
     sender.value='';
+    montant_ajout.value=''
 
 })
 
@@ -303,7 +328,7 @@ document.body.addEventListener('click',()=>{
 sender.addEventListener('input',()=>{
     let taille = sender.value.length;
     genererNum.innerHTML='';
-    if(sender.value.length > 0){
+    if(sender.value.length > 2){
         genererNum.style.display="block";
         let search= users.filter(function(user){
             let userR=user.Tel.substr(0,taille)
@@ -313,12 +338,12 @@ sender.addEventListener('input',()=>{
         })
         for (let i = 0; i < search.length; i++){
            const r = document.createElement('p');
-           r.innerHTML=search[i].Tel   
+           r.innerHTML=`${search[i].Prenom}: <span>${search[i].Tel}</span>`
            genererNum.appendChild(r)
         }
 
-        const p_num = document.querySelectorAll('.genererNum p')
-        console.log(p_num);
+        const p_num = document.querySelectorAll('.genererNum p span')
+        
         p_num.forEach(element => {
             element.addEventListener('click',()=>{
                 sender.value=element.innerText;
@@ -346,6 +371,43 @@ search.addEventListener('click',()=>{
     }
 })
 
+
+const loading = document.querySelector('.loading');
+window.addEventListener('offline',()=>{
+loading.style.display="flex"
+})
+
+window.addEventListener('online',()=>{
+    loading.style.display="none"
+})
+
+const suggestions = document.querySelector('.suggestions');
+
+searchUsers.addEventListener('input',()=>{
+    suggestions.style.display='block';
+    if (searchUsers.value=='') {
+        suggestions.style.display='none';
+    }
+    suggestions.innerHTML=''
+   let recherche = users.filter(function(user){
+    if (user.Tel.includes(searchUsers.value)) {
+        return true
+    }
+   })
+   for (let i = 0; i < recherche.length; i++) {
+    const suggestion = document.createElement('p');
+    suggestion .innerHTML = `${recherche[i].Prenom}: <span>${recherche[i].Tel}</span>`
+    suggestions.appendChild(suggestion)
+   }
+
+   const p = document.querySelectorAll('.suggestions p span');
+   p.forEach(element => {
+    element.addEventListener('click',()=>{
+        searchUsers.value=element.innerText;
+        suggestions.style.display='none';
+    })
+   });
+})
 
 
 
